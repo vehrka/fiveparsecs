@@ -28,9 +28,9 @@
   },
   "primaryTokenAttribute": null,
   "secondaryTokenAttribute": null,
-  "url": "https://github.com/vehkra/fiveparsecs",
-  "manifest": "https://github.com/vehkra/fiveparsecs/releases/latest/download/system.json",
-  "download": "https://github.com/vehkra/fiveparsecs/releases/latest/download/fiveparsecs-main.zip",
+  "url": "https://github.com/vehrka/fiveparsecs",
+  "manifest": "https://github.com/vehrka/fiveparsecs/releases/latest/download/system.json",
+  "download": "https://github.com/vehrka/fiveparsecs/releases/latest/download/fiveparsecs-main.zip",
   "documentTypes": {
     "Actor": {
       "character": {
