@@ -1,0 +1,187 @@
+<form class="fp roll-dialog">
+ <header class="roll-header">
+        <h1 class="fp roll-name dialog-header">{{localize "FP.ui.rolldialog.postbattle.title"}}</h1>
+    </header>
+
+ <div class="fp roll-dialog">
+    {{log "data passed for upkeep: " data}}
+     <div class="form-group">
+         
+         <table class="fp dialog-roster">
+             <tr class="fp terminal">
+                 <th>{{localize "FP.ui.rolldialog.postbattle.checkriv"}}</th>
+                 <td>
+                     <select name="riv" id="riv">
+                           <option value="yes">{{localize "FP.ui.general.yes"}}</option>
+                           <option value="no" selected>{{localize "FP.ui.general.no"}}</option>
+                     </select>
+                 </td>
+                 {{#if auto}}
+                 <td style="padding-left:12px;">
+                     {{localize "FP.ui.general.modifier"}}: <input class="fp value-input" id="riv-mod" type="text" value="0" data-dtype="Number"/>
+                 </td>
+                 <td>
+                     <input style="vertical-align:middle; bottom:0.7em;" type="checkbox" id="exist-rival"/> {{localize "FP.ui.rolldialog.postbattle.existriv"}}
+                 </td>
+                 {{else}}
+                 <td>
+                     <input type="text" class="fp text-input" style="width:100%" id="riv-outcome" data-dtype="String" value=""/>
+                 </td>
+                 {{/if}}
+             </tr>
+             <tr class="fp terminal">
+                 <th>{{localize "FP.ui.rolldialog.postbattle.patsux"}}</th>
+                 <td>
+                     <select name="pat" id="pat">
+                           <option value="yes">{{localize "FP.ui.general.yes"}}</option>
+                           <option value="no" selected>{{localize "FP.ui.general.no"}}</option>
+                     </select>
+                 </td>
+                 {{#if auto}}
+                 <td></td>
+                 <td></td>
+                 {{else}}
+                 <td>
+                    <input type="text" class="fp text-input" style="width:100%" id="pat-outcome" data-dtype="String" value=""/>
+                 </td>
+                 {{/if}}
+            </tr>
+            <tr class="fp terminal">
+                <th>{{localize "FP.ui.rolldialog.postbattle.questfought"}}</th>
+                 <td>
+                     <select name="qst" id="qst">
+                           <option value="yes">{{localize "FP.ui.general.yes"}}</option>
+                           <option value="no" selected>{{localize "FP.ui.general.no"}}</option>
+                     </select>
+                 </td>
+                 {{#if auto}} 
+                 <td style="padding-left:12px;">
+                    {{localize "FP.ui.general.modifier"}}: <input class="fp value-input" id="qst-mod" type="text" value="0" data-dtype="Number"/>
+                 </td>
+                 <td></td>
+                 {{else}}
+                 <td>
+                      <input type="text" class="fp text-input" style="width:100%" id="qst-outcome" data-dtype="String" value=""/>
+                 </td>
+                 {{/if}}
+             </tr>
+             <tr class="fp terminal">
+                <th>{{localize "FP.ui.rolldialog.postbattle.misspay"}}</th>
+                 <td>
+                     <select name="pay" id="pay">
+                           <option value="yes">{{localize "FP.ui.general.yes"}}</option>
+                           <option value="no">{{localize "FP.ui.general.no"}}</option>
+                     </select>
+                 </td>
+                 {{#if auto}} 
+                 <td style="padding-left:12px;">
+                    {{localize "FP.ui.general.modifier"}}: <input class="fp value-input" type="text" id="pay-mod" value="0" data-dtype="Number"/>
+                 </td>
+                 <td>
+                    <input style="vertical-align:middle; bottom:0.7em;" type="checkbox" id="qst-final"/> {{localize "FP.ui.rolldialog.postbattle.questfinale"}} 
+                 </td>
+                 {{else}}
+                 <td>
+                      <input type="text" class="fp text-input" style="width:100%" id="pay-outcome" data-dtype="String" value=""/>
+                 </td>
+                 {{/if}}
+             </tr>
+              <tr class="fp terminal">
+                <th>{{localize "FP.ui.rolldialog.postbattle.campev"}}</th>
+                 <td>
+                     <select name="cev" id="cev">
+                           <option value="yes">{{localize "FP.ui.general.yes"}}</option>
+                           <option value="no" selected>{{localize "FP.ui.general.no"}}</option>
+                     </select>
+                 </td>
+                 {{#if auto}}
+                 <td></td>
+                 <td></td>
+                 {{else}}
+                 <td>
+                      <input type="text" class="fp text-input" style="width:100%" id="cev-outcome" data-dtype="String" value=""/>
+                 </td>
+                 {{/if}}
+             </tr>
+             <tr class="fp terminal">
+                <th>{{localize "FP.ui.rolldialog.postbattle.charev"}}</th>
+                 <td>
+                     <select name="chv" id="chv">
+                           <option value="yes">{{localize "FP.ui.general.yes"}}</option>
+                           <option value="no" selected>{{localize "FP.ui.general.no"}}</option>
+                     </select>
+                 </td>
+                 {{#if auto}}
+                 <td></td>
+                 <td><input type="checkbox" style="vertical-align:middle" id="chv-twice"/> {{localize "FP.ui.rolldialog.postbattle.rolltwice"}}</td>
+                 {{else}}
+                 <td>
+                      <input type="text" class="fp text-input" style="width:100%" id="chv-outcome" data-dtype="String" value=""/>
+                 </td>
+                 {{/if}}
+             </tr>
+             <tr class="fp terminal">
+                <th>{{localize "FP.ui.rolldialog.postbattle.battfind"}}</th>
+                 <td>
+                     <select name="fnd" id="fnd">
+                           <option value="yes">{{localize "FP.ui.general.yes"}}</option>
+                           <option value="no">{{localize "FP.ui.general.no"}}</option>
+                     </select>
+                 </td>
+                 {{#if auto}}
+                 <td></td>
+                 <td></td>
+                 {{else}}
+                 <td>
+                      <input type="text" class="fp text-input" style="width:100%" id="fnd-outcome" data-dtype="String" value=""/>
+                 </td>
+                 {{/if}}
+             </tr>
+             <tr class="fp terminal">
+                 <th>{{localize "FP.ui.rolldialog.postbattle.checkinv"}}</th>
+                <td>
+                     <select name="inv" id="inv">
+                          <option value="yes">{{localize "FP.ui.general.yes"}}</option>
+                           <option value="no">{{localize "FP.ui.general.no"}}</option>
+                     </select>
+                 </td>
+                 {{#if auto}}
+                 <td style="padding-left:12px;">
+                   {{localize "FP.ui.general.modifier"}}: <input class="fp value-input" type="text" id="inv-mod" value="0" data-dtype="Number"/>
+                 </td>
+                 <td>
+                     {{localize "FP.ui.rolldialog.invthreat"}}: <input style="vertical-align:middle" type="checkbox" id="inv-threat"/>
+                 </td>
+                 <td></td>
+                 {{else}}
+                 <td>
+                      <input type="text" class="fp text-input" style="width:100%" id="inv-outcome" data-dtype="String" value=""/>
+                 </td>
+                 {{/if}}
+             </tr>
+              <tr class="fp terminal">
+                 <th>{{localize "FP.ui.rolldialog.postbattle.getloot"}}</th>
+                <td>
+                     <select name="loot" id="loot">
+                           <option value="yes">{{localize "FP.ui.general.yes"}}</option>
+                           <option value="no">{{localize "FP.ui.general.no"}}</option>
+                     </select>
+                 </td>
+                 {{#if auto}}
+                 <td></td>
+                 <td style="padding-left:12px;">
+                     {{localize "FP.ui.rolldialog.postbattle.lootrolls"}}: <input class="fp value-input" type="text" id="loot-mod" value="1" data-dtype="Number"/>
+                 </td>
+                 {{else}}
+                 <td>
+                      <input type="text" class="fp text-input" style="width:100%" id="loot-outcome" data-dtype="String" value=""/>
+                 </td>
+                 {{/if}}
+             </tr>
+            
+         </table>         
+     </div>
+ </div>
+
+
+</form>

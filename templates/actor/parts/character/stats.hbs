@@ -1,0 +1,62 @@
+<div class="character-stats">
+    <div class="flex-item" style="min-width:50%;">
+        <table class="fp crew-roster">
+            <tr class="fp sheet-label">
+                <th style="border-right:1px solid gray">{{localize "FP.gameterm.name"}}</th>
+                <th>{{localize "FP.gameterm.species"}}</th>
+                <th style="text-align:center">{{localize "FP.ui.charsheet.casualty"}}?</th>
+                <th>{{localize "FP.ui.charsheet.sick_time"}}</th>
+                <th>{{localize "FP.ui.charsheet.save"}}</th>
+            </tr>
+            <tr>
+                <td style="padding-right:3px">
+                    <span data-field="name" class="inline-edit hw val-box" style="background:none;" contenteditable>{{actor.name}}</span>
+                </td>
+                <td style="padding-left:3px;">
+                    <span data-field="system.species" class="inline-edit hw val-box" contenteditable>{{system.species}}</span>
+                </td>
+                <td style="text-align:center;">
+                    <input type="checkbox" class="fp toggle" name="system.casualty" value="{{system.casualty}}" {{#if system.casualty}}checked{{/if}}/>
+                </td>
+                <td>
+                    <span data-field="system.sickbay_time" class="inline-edit hw val-box" style="background:none;" contenteditable>{{system.sickbay_time}}</span>
+                </td>
+                <td>
+                    <span data-field="system.save" class="inline-edit hw val-box" style="background:none;" contenteditable>{{system.save}}</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="fp flexrow">
+        <div class="fp flex-item" style="text-align:center; max-width:70%;">
+            <table class="fp crew-roster">
+                <tr class="fp sheet-label-center">
+                    <th>{{localize "FP.character.stat_abbrev.reactions"}}</th>
+                    <th>{{localize "FP.character.stat_abbrev.speed"}}</th>
+                    <th>{{localize "FP.character.stat_abbrev.combat"}}</th>
+                    <th>{{localize "FP.character.stat_abbrev.toughness"}}</th>
+                    <th>{{localize "FP.character.stat_abbrev.savvy"}}</th>
+                </tr>
+                <tr>
+                    <td><span data-field="system.reactions" class="inline-edit hw val-box" contenteditable>{{system.reactions}}</span></td>
+                    <td><span data-field="system.speed" class="inline-edit hw val-box" contenteditable>{{system.speed}}</span></td>
+                    <td><span data-field="system.combat" class="inline-edit hw val-box" contenteditable>{{system.combat}}</span></td>
+                    <td><span data-field="system.toughness" class="inline-edit hw val-box" contenteditable>{{system.toughness}}</span></td>
+                    <td><span data-field="system.savvy" class="inline-edit hw val-box" contenteditable>{{system.savvy}}</span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="fp flex-item" style="text-align:center; max-width:28%;">
+            <table class="fp crew-roster">
+                <tr class="fp sheet-label-center">
+                    <th>{{localize "FP.character.stat.luck"}}</th>
+                    <th>{{localize "FP.character.stat.xp"}}</th>
+                </tr>
+                <tr>
+                    <td><span data-field="system.luck" class="inline-edit hw val-box" contenteditable>{{system.luck}}</span></td>
+                    <td><span data-field="system.xp" class="inline-edit hw val-box" contenteditable>{{system.xp}}</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

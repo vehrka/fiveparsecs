@@ -1,0 +1,22 @@
+<form class="fp roll-dialog">
+ <header class="roll-header">
+        <h1 class="fp roll-name dialog-header">{{localize "FP.ui.instructions.rolling"}} {{expr}}</h1>
+    </header>
+     <div class="form-group">
+         <table class="fp dialog-roster">
+             <tr class="fp terminal">
+                 <th>{{localize "FP.gameterm.bonuses"}}</th>
+                 <td style="text-align:center">
+                    <input class="fp value-input" id="bonus" type="text" value="0" data-dtype="Number"/>
+                 </td>
+            </tr>
+            <tr class="fp terminal">
+                <th>{{localize "FP.gameterm.penalties"}}</th>
+                 <td style="text-align:center">
+                     <input class="fp value-input" id="penalty" type="text" value="0" data-dtype="Number"/>
+                 </td>
+             </tr>
+    
+         </table>         
+     </div>
+ </form>

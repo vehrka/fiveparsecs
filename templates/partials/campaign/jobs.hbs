@@ -1,0 +1,20 @@
+<tr>
+    <td class="fp sheet-label">
+      {{localize "FP.campaign_turn.jobs.entity"}}<br/>
+        <a data-action="campaignStep" class="ct-step" data-ct-phase="jobs" data-ct-action="gen-pat-job" title="{{localize 'FP.campaign_turn.jobs.activity'}}"><img class="dice-img" src="systems/fiveparsecs/assets/campaign/shaking-hands.png" height="32" width="32" style="border:0"/></a>
+    </td>
+    <td>
+          {{#each jobs as |job id|}}
+          {{log "jobs: " jobs}}
+          <p><span class="fp sheet-label"><strong>{{job.name}}</strong></span> <span class="edit-icons"><a data-action="editItem" class="item-edit item" title="Edit Job" data-item-id="{{job.id}}"><i class="fas fa-edit"></i></a> <a data-action="deleteItem" class="item-delete item" title="Delete Job" data-item-id="{{job.id}}"><i class="fas fa-trash"></i></a></span><br/>
+        <span class="fp sheet-label">{{localize "FP.ui.job.patron"}}: </span><span class="hw">{{job.system.patron_type}}</span><br/>
+        <span class="fp sheet-label">{{localize "FP.ui.job.danger_pay"}}: </span><span class="hw">{{job.system.danger_pay}}</span><br/>
+        <span class="fp sheet-label">{{localize "FP.ui.job.time_frame"}}: </span><span class="hw">{{job.system.time_frame}}</span><br/>
+        <span class="fp sheet-label">{{localize "FP.ui.job.benefits"}}: </span><span class='hw'>{{job.system.benefits}}</span><br/>
+        <span class="fp sheet-label">{{localize "FP.ui.job.hazards"}}: </span><span class='hw'>{{job.system.hazards}}</span><br/>
+        <span class="fp sheet-label">{{localize "FP.ui.job.conditions"}}: </span><span class='hw'>{{job.system.conditions}}</span><br/>
+        <span class="fp sheet-label">{{localize "FP.ui.job.complete"}}: </span>{{#if job.system.complete}}<i class="fas fa-check-square"></i>{{else}}<i class="far fa-square"></i>{{/if}}
+        </p>
+        {{/each}}
+    </td>
+</tr>

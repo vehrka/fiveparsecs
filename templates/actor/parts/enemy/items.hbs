@@ -1,0 +1,49 @@
+<div class="enemy-items">
+    <div class="fp flexcol" style="min-width:50%">
+        <div style="padding:3px; margin-right:12px;">
+            <table class="fp enemy-roster" style="border-collapse:collapse;">
+                <tr class="fp sheet-label labels">
+                    <th>{{localize "FP.gameterm.weapon"}} <a data-action="createItem" class="item-create" title="Add Weapon" data-type="weapon"><i class="fas fa-plus-square"></i></a></th>
+                    <th>{{localize "FP.weapon.stat.range"}}</th>
+                    <th>{{localize "FP.weapon.stat.shots"}}</th>
+                    <th>{{localize "FP.weapon.stat.damage"}}</th>
+                    <th>{{localize "FP.gear.stat.traits"}}</th>
+                </tr>
+                {{#each weapons as |weapon id|}}
+                <tr class="hw">
+                    <td class="item-name item" data-item-id="{{weapon.id}}">{{weapon.name}}
+                        <span class="edit-icons-es"><a data-action="attackRoll" class="atk-roll" title="Roll {{weapon.name}} Attack" data-type="weapon" data-weapon-id="{{weapon.id}}">
+                            <i class="fas fa-crosshairs"></i>
+                        </a> <a data-action="editItem" class="item-edit item" title="Edit {{weapon.name}}" data-type="weapon" data-item-id="{{weapon.id}}">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                            <a data-action="deleteItem" class="item-delete item" title="Delete {{weapon.name}}" data-type="weapon" data-item-id="{{weapon.id}}"><i class="fas fa-trash"></i></a></span>
+                    </td>
+                    <td style="text-align:center">{{weapon.system.range}}</td>
+                    <td style="text-align:center">{{weapon.system.shots}}</td>
+                    <td style="text-align:center">{{weapon.system.damage}}</td>
+                    <td style="text-align:center">{{weapon.system.traits}}</td>
+                </tr>
+                {{/each}}
+            </table>
+        </div>
+    </div>
+    <div class="fp flexcol">
+        <div style="padding:3px; margin-right:12px;">
+            <table class="fp enemy-roster">
+                <tr>
+                    <td style="width:10%"><span class="fp sheet-label labels" style="vertical-align:top; color:#e72d41">Gear</span> <a data-action="createItem" class="item-create" style="color:#e72d41" title="Add Gear" data-type="gear"><i class="fas fa-plus-square"></i></a></td>
+                    <td style="padding-left:3px;">
+                        {{#each gear as |gear id|}}
+                            <a data-action="editItem" class="item-edit item hw" title="{{localize 'FP.ui.general.edit'}} {{gear.name}}" data-type="gear" data-item-id="{{gear.id}}">{{gear.name}}
+                                {{#if (gt gear.system.uses 0)}}&nbsp;x{{gear.system.uses}}{{/if}}
+                            </a>
+                             <span class="edit-icons-es"><a data-action="deleteItem" class="item-delete item" title="{{localize 'FP.ui.general.delete'}} {{gear.name}}" data-type="gear" data-item-id="{{gear.id}}"><i class="fas fa-trash"></i></a></span>
+                            {{#if @last}} {{else}}, {{/if}}
+                        {{/each}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

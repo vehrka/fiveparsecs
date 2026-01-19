@@ -1,0 +1,26 @@
+<!--div class="fp flexrow">
+<div class="fp flex-item" style="padding:3px; margin-right:12px;">
+    <p><span class="fp-labels">Travel</span> <a class="campaign-turn" data-ct-step="travel-event" title="Generate Travel Event"><i class="fas fa-rocket"></i></a></p>
+</div>
+<div class="fp flex-item">
+    <a data-action="campaignStep" class="ct-step" data-ct-action="leave-world">Leave This World</a>
+    <a data-action="campaignStep" class="ct-step" data-ct-action="stay-world">Stay on This World</a>
+</div>
+<div class="fp flex-item">
+    <p><strong>Travel Event</strong>: {{#if system.traveling}}{{system.travel_event}}{{else}}N/A{{/if}}</p>
+</div>
+<div class="fp flex-item" style="padding:3px; margin-right:12px;">
+    <input type="checkbox" name="system.travel_done" {{#if system.travel_done}}checked{{/if}}/></p> Step Completed
+</div>
+</div-->
+
+<tr>
+    <td class="fp sheet-label">
+        {{localize 'FP.campaign_turn.travel.entity'}}<br/>
+ <a data-action="campaignStep" class="ct-step" data-ct-phase="travel" data-ct-action="leave-world" title="{{localize 'FP.campaign_turn.travel.create_event'}}"><img class="dice-img" src="systems/fiveparsecs/assets/campaign/rocket-flight.png" height="32" width="32" style="border:0"/></a>
+    </td>
+    <td>
+        {{#if (ne data.campaign_turn.travel.travel_event "")}}<span class="fp sheet-label">{{localize "FP.campaign_turn.travel.event"}}: </span> <span class="hw">{{data.campaign_turn.travel.travel_event}}</span>{{/if}}
+    </td>
+
+</tr>

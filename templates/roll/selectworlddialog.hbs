@@ -1,0 +1,18 @@
+{{!-- World Selection Dialog Template --}}
+<form class="fp roll-dialog">
+  <header class="roll-header">
+    <h1 class="fp roll-name dialog-header">{{localize "FP.campaign_turn.arrival.select_title"}}</h1>
+  </header>
+  <div class="form-group">
+    <p>{{localize "FP.campaign_turn.arrival.select_prompt"}}</p>
+    <div class="world-list">
+      {{#each worlds}}
+      <label class="world-option" style="display:block; padding:4px; margin:2px 0;">
+        <input type="radio" name="worldId" value="{{this.id}}" {{#if @first}}checked{{/if}} />
+        <span class="world-name">{{this.name}}</span>
+        {{#if this.system.active}}<span class="active-indicator" style="color:#7dc8e6; font-style:italic;"> {{localize "FP.ui.world.current"}}</span>{{/if}}
+      </label>
+      {{/each}}
+    </div>
+  </div>
+</form>

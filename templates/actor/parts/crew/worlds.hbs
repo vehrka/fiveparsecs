@@ -1,0 +1,50 @@
+<section class="tab worlds-content {{tab.cssClass}}" data-group="primary" data-tab="worlds">
+    <div style="padding:3px; margin-right:12px;">
+        <table class="fp crew-roster" style="border-collapse:collapse;">
+            <tr class="fp sheet-label">
+
+                <th>{{localize "FP.ui.world.entity"}}</th>
+                <th>{{localize "FP.ui.world.invaders"}}</th>
+                <th>{{localize "FP.ui.world.license"}}</th>
+                <th>{{localize "FP.ui.world.localpat"}}</th>
+                <th>{{localize "FP.ui.world.localriv"}}</th>
+                <th>{{localize "FP.gameterm.notes"}}</th>
+                <th></th>
+
+            </tr>
+            {{#each worlds as |world id|}}
+            <tr {{#if world.system.active}}class="active-world"{{/if}}>
+                <td class="hw">
+                    {{world.name}}{{#if world.system.active}} <span class="active-indicator" style="color:#7dc8e6; font-style:italic;">{{localize "FP.ui.world.current"}}</span>{{/if}}&nbsp;
+
+                    <p>{{world.system.traits}}</p>
+
+                </td>
+                <td class="hw" style="text-align:center">
+                    {{world.system.invaders}}{{#if (ne world.system.invaders "")}}/{{/if}}{{world.system.inv_progress}}
+                </td>
+                <td class="hw" style="text-align:center">
+                    {{#if world.system.licensing}}Yes{{else}}No{{/if}} {{#if world.system.license_obtained}}(Acquired){{else}}(Not Acquired){{/if}}
+                </td>
+                <td class="hw" style="text-align:center">
+                    {{#if (ne world.system.p1.name "")}}<p>{{world.system.p1.name}}: {{world.system.p1.benefit}}</p>{{/if}}
+                    {{#if (ne world.system.p2.name "")}}<p>{{world.system.p2.name}}: {{world.system.p2.benefit}}</p>{{/if}}
+                    {{#if (ne world.system.p3.name "")}}<p>{{world.system.p3.name}}: {{world.system.p3.benefit}}</p>{{/if}}
+                </td>
+                <td class="hw" style="text-align:center">
+                    {{#if (ne world.system.r1.name "")}}<p>{{world.system.r1.name}}: {{world.system.r1.notes}}</p>{{/if}}
+                    {{#if (ne world.system.r2.name "")}}<p>{{world.system.r2.name}}: {{world.system.r2.notes}}</p>{{/if}}
+                    {{#if (ne world.system.r3.name "")}}<p>{{world.system.r3.name}}: {{world.system.r3.notes}}</p>{{/if}}
+                </td>
+                <td class="hw" style="text-align:center">
+                    {{world.system.notes}}
+                </td>
+                 <td style="font-size:2em; padding-left:3px; color:white; background:#7dc8e6"><a data-action="setArrival" class="item" title="{{localize 'FP.ui.world.set_arrival'}}" data-item-id="{{world.id}}"><i class="fas fa-globe"></i></a><br/>
+                    <a data-action="editItem" class="item-edit item" title="{{localize 'FP.ui.general.edit'}} {{world.name}}" data-type="world" data-item-id="{{world.id}}"><i class="fa fa-edit"></i></a><br/>
+                    <a data-action="deleteItem" class="item-delete item" title="{{localize 'FP.ui.general.delete'}} {{world.name}}" data-type="world" data-item-id="{{world.id}}"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+</section>

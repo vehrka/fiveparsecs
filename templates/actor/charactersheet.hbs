@@ -1,0 +1,250 @@
+    <header class="fp sheethead">
+    </header>
+    
+    <section class="sheetbody">
+        <div class="fp flexrow">
+            <div class="fp flexcol" style="border:2px solid rgb(111, 188, 252); border-radius:8px; margin:6px;
+                                            {{#if system.casualty}}background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAJ0lEQVQYV2NkgIL/DAz/GRkYGEFcMIEsABZEF4CrhBmBpAshBNMFAA5zCgTDHweQAAAAAElFTkSuQmCC);{{/if}}">
+                {{!--pic and dice links--}}
+                <div class="fp flexrow">
+                    <div class="fp flex-item" style="position:relative">
+                        <img class="profile-img" style="border:1px solid #44b9de; min-width:64px !important; min-height:64px !imporant; cursor:pointer" src="{{actor.img}}" data-action="changeImage" title="{{actor.name}}" height="64" width="64"/>
+                    {{!--character image column--}}
+                        <div style="position:absolute; top:2px; left:2px; width:24px; height:24px; background:none; color:black;">
+                               {{#if system.captain}} <i class="fas fa-flag"></i>{{/if}}
+                        </div>
+                    </div>
+                    {{> 'systems/fiveparsecs/templates/partials/sheet/dice_roll_block.hbs'
+                            chartype=actor.type
+                    }}
+                </div>
+                
+                
+                    <div class="flex-item" style="min-width:50%;">
+                        <table class="fp crew-roster">
+                            <tr class="fp sheet-label">
+                                <th style="border-right:1px solid gray">{{localize "FP.gameterm.name"}}</th>
+                                <th>{{localize "FP.gameterm.species"}}</th>
+                                <th style="text-align:center">{{localize "FP.ui.charsheet.casualty"}}?</th>
+                                <th>{{localize "FP.ui.charsheet.sick_time"}}</th>
+                                <th>{{localize "FP.ui.charsheet.save"}}</th>
+                            </tr>
+                            <tr>
+                                <td style="padding-right:3px">
+                                    <span data-field="name" class="inline-edit hw val-box" style="background:none;" contenteditable>{{actor.name}}</span>
+                                    <!--input class="fp charname" style="text-align:left; width:100%; vertical-align:top; background:rgb(255, 255, 255);" name="name" type="text" value="{{actor.name}}" placeholder="Name"/-->
+                                </td>
+                                <td style="padding-left:3px;">
+                                    <span data-field="system.species" class="inline-edit hw val-box" contenteditable>{{system.species}}</span>
+                                </td>
+                                <td style="text-align:center;">
+                                    <input type="checkbox" class="fp toggle" name="system.casualty" value="{{system.casualty}}" {{#if system.casualty}}checked{{/if}}/> 
+                                </td>
+                                <td>
+                                    <span data-field="system.sickbay_time" class="inline-edit hw val-box" style="background:none;" contenteditable>{{system.sickbay_time}}</span>
+                                </td>
+                                <td>
+                                    <span data-field="system.save" class="inline-edit hw val-box" style="background:none;" contenteditable>{{system.save}}</span>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        
+                    </div>
+                    <div class="fp flexrow">
+                        <div class="fp flex-item" style="text-align:center; max-width:70%;">
+                            <table class="fp crew-roster">
+                                <tr class="fp sheet-label-center">
+                                    <th>{{localize "FP.character.stat_abbrev.reactions"}}</th>
+                                    <th>{{localize "FP.character.stat_abbrev.speed"}}</th>
+                                    <th>{{localize "FP.character.stat_abbrev.combat"}}</th>
+                                    <th>{{localize "FP.character.stat_abbrev.toughness"}}</th>
+                                    <th>{{localize "FP.character.stat_abbrev.savvy"}}</th>
+                                </tr>
+                                    
+                                </tr>
+                                <td><span data-field="system.reactions" class="inline-edit hw val-box" contenteditable>{{system.reactions}}</span></td>
+                            <td><span data-field="system.speed" class="inline-edit hw val-box" contenteditable>{{system.speed}}</span></td>
+                            <td><span data-field="system.combat" class="inline-edit hw val-box" contenteditable>{{system.combat}}</span></td>
+                            <td><span data-field="system.toughness" class="inline-edit hw val-box" contenteditable>{{system.toughness}}</span></td>
+                            <td><span data-field="system.savvy" class="inline-edit hw val-box" contenteditable>{{system.savvy}}</span></td>
+                            </table>
+                        </div>
+                        <div class="fp flex-item" style="text-align:center; max-width:28%;">
+                            <table class="fp crew-roster">
+                                <tr class="fp sheet-label-center">
+                                    <th>{{localize "FP.character.stat.luck"}}</th>
+                                    <th>{{localize "FP.character.stat.xp"}}</th>
+                                </tr>
+                                <tr><td><span data-field="system.luck" class="inline-edit hw val-box" contenteditable>{{system.luck}}</span></td>
+                                <td><span data-field="system.xp" class="inline-edit hw val-box" contenteditable>{{system.xp}}</span></td></tr>
+                            
+                            </table>
+                        </div>
+                    </div>
+                    {{!--name and stats row--}}
+                
+                
+                   <div class="fp flexcol" style="min-width:50%">       
+                        <div style="padding:1px; margin-right:12px;">
+                            <table class="fp crew-roster" style="border-collapse:collapse;">
+                                <tr class="fp sheet-label labels">
+                                    <th>{{localize "FP.gameterm.weapon"}} <a data-action="createItem" class="item-create" title="Add Weapon" data-type="weapon"><i class="fas fa-plus-square"></i></a></th>
+                                    <th>{{localize "FP.weapon.stat.range"}}</th>
+                                    <th>{{localize "FP.weapon.stat.shots"}}</th>
+                                    <th>{{localize "FP.weapon.stat.damage"}}</th>
+                                    <th>{{localize "FP.gear.stat.traits"}}</th>
+                                </tr>
+                                {{#each weapons as |weapon id|}}
+                                <tr class="hw">
+                                    <td class="item-name item" data-item-id="{{weapon.id}}">
+                                        
+                                        
+                                        {{weapon.name}} 
+
+                                        <span class="edit-icons-cs"><a data-action="attackRoll" class="atk-roll" title="{{localize 'FP.ui.general.roll'}} {{weapon.name}} {{localize 'FP.ui.general.attack'}}" data-type="weapon" data-weapon-id="{{weapon.id}}">
+                                            <i class="fa fa-crosshairs"></i>
+                                        </a> <a data-action="editItem" class="item-edit item" title="{{localize 'FP.ui.general.edit'}} {{weapon.name}}" data-type="weapon" data-item-id="{{weapon.id}}">
+                                            <i class="fa fa-edit"></i>
+                                        </a> 
+                                            <a data-action="deleteItem" class="item-delete item" title="{{localize 'FP.ui.general.delete'}} {{weapon.name}}" data-type="weapon" data-item-id="{{weapon.id}}"><i class="fas fa-trash"></i></a></span>
+
+                                    </td>
+                                    <td style="text-align:center">{{weapon.system.range}}</td>
+                                    <td style="text-align:center">{{weapon.system.shots}}</td>
+                                    <td style="text-align:center">{{weapon.system.damage}}</td>
+                                    <td style="text-align:center">{{weapon.system.traits}}</td>
+                                </tr>
+                                {{/each}}
+                            </table>
+                        </div>
+                    </div> {{!--weapon 1 / gear / xp row--}}
+                   <div class="fp flexcol">
+                        <div class="fp flex-item" style="margin-right:12px">
+                            <table class="fp crew-roster">
+                               <tr class="fp sheet-label labels">
+                                   <th>{{localize "FP.trait.type.background"}} <a data-action="createItem" class="item-create" data-type="background" title="Add Background"><i class="fas fa-plus-square"></i></a></th>
+                                   <th>{{localize "FP.trait.stat.effect"}}</th>
+                                   <th>{{localize "FP.trait.stat.resources"}}</th>
+                                   <th>{{localize "FP.trait.stat.startingRolls"}}</th>
+                               </tr>
+                               {{#each backgrounds as |item id|}}
+                               <tr class="hw">
+                                   <td class="item-name item" data-item-id="{{item.id}}">
+                                       {{item.name}}
+                                        <span class="edit-icons-cs"><a data-action="editItem" class="item-edit item" title="{{localize 'FP.ui.general.edit'}} {{item.name}}" data-type="background" data-item-id="{{item.id}}">
+                                            <i class="fa fa-edit"></i>
+                                        </a> 
+                                            <a data-action="deleteItem" class="item-delete item" title="{{localize 'FP.ui.general.delete'}} {{item.name}}" data-type="background" data-item-id="{{item.id}}"><i class="fas fa-trash"></i></a></span>
+
+                                   </td>
+                                   <td style="text-align:center">
+                                       {{item.system.effect}}
+                                   </td>
+                                   <td style="text-align:center">
+                                       {{item.system.resources}}
+                                   </td>
+                                   <td style="text-align:center">
+                                       {{item.system.starting_rolls}}
+                                   </td>
+                               </tr>
+                               {{/each}}
+                           </table>
+                       </div>
+                       <div class="fp flex-item" style="margin-right:12px">
+                            <table class="fp crew-roster">
+                               <tr class="fp sheet-label labels">
+                                   <th>{{localize "FP.trait.type.motivation"}} <a data-action="createItem" class="item-create" data-type="motivation" title="Add Motivation"><i class="fas fa-plus-square"></i></a></th>
+                                   <th>{{localize "FP.trait.stat.effect"}}</th>
+                                   <th>{{localize "FP.trait.stat.resources"}}</th>
+                                   <th>{{localize "FP.trait.stat.startingRolls"}}</th>
+                               </tr>
+                               {{#each motivations as |item id|}}
+                               <tr class="hw">
+                                   <td class="item-name item" data-item-id="{{item.id}}">
+                                       {{item.name}}
+                                        <span class="edit-icons-cs"><a data-action="editItem" class="item-edit item" title="{{localize 'FP.ui.general.edit'}} {{item.name}}" data-type="motivation" data-item-id="{{item.id}}">
+                                            <i class="fa fa-edit"></i>
+                                        </a> 
+                                            <a data-action="deleteItem" class="item-delete item" title="{{localize 'FP.ui.general.delete'}} {{item.name}}" data-type="motivation" data-item-id="{{item.id}}"><i class="fas fa-trash"></i></a></span>
+
+                                   </td>
+                                   <td style="text-align:center">
+                                       {{item.system.effect}}
+                                   </td>
+                                   <td style="text-align:center">
+                                       {{item.system.resources}}
+                                   </td>
+                                   <td style="text-align:center">
+                                       {{item.system.starting_rolls}}
+                                   </td>
+                               </tr>
+                               {{/each}}
+                           </table>
+                       </div>
+                       <div class="fp flex-item" style="margin-right:12px">
+                            <table class="fp crew-roster">
+                               <tr class="fp sheet-label labels">
+                                   <th>{{localize "FP.trait.type.class"}} <a data-action="createItem" class="item-create" data-type="class" title="Add Class"><i class="fas fa-plus-square"></i></a></th>
+                                  <th>{{localize "FP.trait.stat.effect"}}</th>
+                                   <th>{{localize "FP.trait.stat.resources"}}</th>
+                                   <th>{{localize "FP.trait.stat.startingRolls"}}</th>
+                               </tr>
+                               {{#each class as |item id|}}
+                               <tr class="hw">
+                                   <td class="item-name item" data-item-id="{{item.id}}">
+                                       {{item.name}}
+                                        <span class="edit-icons-cs"><a data-action="editItem" class="item-edit item" title="{{localize 'FP.ui.general.edit'}} {{item.name}}" data-type="class" data-item-id="{{item.id}}">
+                                            <i class="fa fa-edit"></i>
+                                        </a> 
+                                            <a data-action="deleteItem" class="item-delete item" title="{{localize 'FP.ui.general.delete'}} {{item.name}}" data-type="class" data-item-id="{{item.id}}"><i class="fas fa-trash"></i></a></span>
+
+                                   </td>
+                                   <td style="text-align:center">
+                                       {{item.system.effect}}
+                                   </td>
+                                   <td style="text-align:center">
+                                       {{item.system.resources}}
+                                   </td>
+                                   <td style="text-align:center">
+                                       {{item.system.starting_rolls}}
+                                   </td>
+                               </tr>
+                               {{/each}}
+                           </table>
+                       </div>
+                   </div>
+                   <div class="fp flexcol"> 
+                        <div style="padding:1px; margin-right:12px;">
+                            <table class="fp crew-roster">
+                                <tr>
+                                    <td style="width:10%"><span class="fp sheet-label labels" style="vertical-align:top; color:rgb(56,143,184)">Gear</span> <a data-action="createItem" class="item-create" style="color:rgb(56, 143, 184)" name="gear" id="gear" title="Add Gear" data-type="gear"><i class="fas fa-plus-square"></i></a></td>
+                                    <td style="padding-left:3px;">
+                                        
+                                        {{#each gear as |gear id|}}
+                                        
+                                            <a data-action="editItem" class="item-edit item hw" title="{{localize 'FP.ui.general.edit'}} {{gear.name}}" data-type="gear" data-item-id="{{gear.id}}"><span class="item-name item" data-item-id="{{gear.id}}">{{gear.name}}
+                                                {{#if (gt gear.system.uses 0)}}&nbsp;x{{gear.system.uses}}{{/if}}</span>
+                                            </a> 
+                                            <span class="edit-icons-cs"><a data-action="deleteItem" class="item-delete item" title="{{localize 'FP.ui.general.delete'}} {{gear.name}}" data-type="gear" data-item-id="{{gear.id}}"><i class="fas fa-trash"></i></a></span>
+                                            
+                                            {{#if @last}} {{else}}, {{/if}}
+
+                                        {{/each}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:10%"><span class="fp sheet-label" style="vertical-align:top; color:rgb(56, 143, 184)">{{localize "FP.gameterm.notes"}}</span></td>
+                                    <td data-field="notes" class="inline-edit-notes hw" style="padding-left:3px;" contenteditable>{{system.notes}}</td>
+                                </tr>
+                                <!--tr>
+                                    <td style="width:10%"><span class="fp sheet-label" style="vertical-align:top">{{localize "FP.gameterm.misc"}}</span></td>
+                                    <td class="hw"><input type="checkbox" style="vertical-align:middle; bottom:0.5em;" name="system.use_bot_injury" {{#if system.use_bot_injury}}checked{{/if}}/>{{localize "FP.character.use_bot_injury"}}</td>
+                                </tr-->
+                            </table>
+                        </div>
+                   </div>
+            </div>
+        </div>
+
+    </section>

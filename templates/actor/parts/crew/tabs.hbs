@@ -1,0 +1,5 @@
+<nav class="sheet-tabs tabs" data-group="primary">
+    {{#each tabs}}
+    <a class="fp labels {{this.cssClass}}" style="text-transform:uppercase" data-group="{{this.group}}" data-tab="{{this.id}}">{{localize this.label}}</a>
+    {{/each}}
+</nav>

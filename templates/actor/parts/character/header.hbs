@@ -1,0 +1,25 @@
+<div class="character-header">
+    <header class="fp sheethead">
+    </header>
+
+    <section class="sheetbody">
+        <div class="fp flexrow">
+            <div class="fp flexcol" style="border:2px solid rgb(111, 188, 252); border-radius:8px; margin:6px;
+                                            {{#if system.casualty}}background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAJ0lEQVQYV2NkgIL/DAz/GRkYGEFcMIEsABZEF4CrhBmBpAshBNMFAA5zCgTDHweQAAAAAElFTkSuQmCC);{{/if}}">
+                {{!--pic and dice links--}}
+                <div class="fp flexrow">
+                    <div class="fp flex-item" style="position:relative">
+                        <img class="profile-img" style="border:1px solid #44b9de; min-width:64px !important; min-height:64px !imporant; cursor:pointer" src="{{actor.img}}" data-action="changeImage" title="{{actor.name}}" height="64" width="64"/>
+                    {{!--character image column--}}
+                        <div style="position:absolute; top:2px; left:2px; width:24px; height:24px; background:none; color:black;">
+                               {{#if system.captain}} <i class="fas fa-flag"></i>{{/if}}
+                        </div>
+                    </div>
+                    {{> 'systems/fiveparsecs/templates/partials/sheet/dice_roll_block.hbs'
+                            chartype=actor.type
+                    }}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

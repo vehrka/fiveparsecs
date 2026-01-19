@@ -1,0 +1,46 @@
+<div class="enemy-stats">
+    <div class="flex-item" style="min-width:50%;">
+        <table class="fp enemy-roster">
+            <tr class="fp sheet-label labels">
+                <th>{{localize "FP.enemy.stat.description"}}</th>
+            </tr>
+            <tr>
+                <td style="padding-right:3px;"><span data-field="name" class="inline-edit hw val-box" style="background:none;" contenteditable>{{actor.name}}</span></td>
+            </tr>
+        </table>
+    </div>
+    <div class="fp flexrow">
+        <div class="fp flex-item" style="text-align:center; max-width:48%;">
+            <table class="fp enemy-roster">
+                <tr class="fp sheet-label-center labels">
+                    <th>{{localize "FP.enemy.stat.panic"}}</th>
+                    <th>{{localize "FP.character.stat_abbrev.speed"}}</th>
+                    <th>{{localize "FP.character.stat_abbrev.combat"}}</th>
+                    <th>{{localize "FP.character.stat_abbrev.toughness"}}</th>
+                </tr>
+                <tr>
+                    <td><span data-field="system.panic_str" class="inline-edit hw val-box" contenteditable>{{system.panic_str}}</span></td>
+                    <td><span data-field="system.speed" class="inline-edit hw val-box" contenteditable>{{system.speed}}</span></td>
+                    <td><span data-field="system.combat" class="inline-edit hw val-box" contenteditable>{{system.combat}}</span></td>
+                    <td><span data-field="system.toughness" class="inline-edit hw val-box" contenteditable>{{system.toughness}}</span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="fp flex-item" style="text-align:center; max-width:48%;">
+            <table class="fp enemy-roster">
+                <tr class="fp sheet-label-center labels">
+                    <th>{{localize "FP.enemy.setup_info.numbers"}}</th>
+                    <th>{{localize "FP.enemy.setup_info.ai"}}</th>
+                    <th>{{localize "FP.enemy.setup_info.weapons"}}</th>
+                    <th>{{localize "FP.character.save"}}</th>
+                </tr>
+                <tr>
+                    <td><span data-field="system.numbers" class="inline-edit hw val-box" contenteditable>{{system.numbers}}</span></td>
+                    <td><span data-field="system.ai" class="inline-edit hw val-box" contenteditable>{{system.ai}}</span></td>
+                    <td><span data-field="system.weapons" class="inline-edit hw val-box" contenteditable>{{system.weapons}}</span></td>
+                    <td><span data-field="system.save" class="inline-edit hw val-box" contenteditable>{{system.save}}</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

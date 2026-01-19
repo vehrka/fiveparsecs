@@ -1,0 +1,20 @@
+<tr>
+    <td class="fp sheet-label">
+        {{localize "FP.campaign_turn.arrival.entity"}}<br/>
+        {{#if auto}}<a data-action="campaignStep" class="ct-step" data-ct-phase="arrival" data-ct-action="arrive-rnd-world" title="{{localize 'FP.campaign_turn.arrival.random'}}"><img class="dice-img" src="systems/fiveparsecs/assets/campaign/coinflip.png" height="32" width="32" style="border:0"/></a>{{/if}}
+        <a data-action="campaignStep" class="ct-step" data-ct-phase="arrival" data-ct-action="arrive-custom-world" title="{{localize 'FP.campaign_turn.arrival.custom'}}"><img class="dice-img" src="systems/fiveparsecs/assets/campaign/eclipse.png" height="32" width="32" style="border:0"/></a>
+        <a data-action="campaignStep" class="ct-step" data-ct-phase="arrival" data-ct-action="arrive-known-world" title="{{localize 'FP.campaign_turn.arrival.known'}}"><img class="dice-img" src="systems/fiveparsecs/assets/campaign/planet-conquest.png" height="32" width="32" style="border:0"/></a>
+    </td>
+    <td>
+        {{log "Active Worlds HBS: " active_world}}
+        {{#each worlds as |world id|}}
+        {{#if world.system.active}}
+        <p><span class="fp sheet-label">{{localize "FP.ui.world.entity"}}: </span><span class="hw">{{world.name}}</span> <span class="edit-icons"><a data-action="editItem" class="item-edit item" title="Edit World" data-item-id="{{world.id}}"><i class="fas fa-edit"></i></a> <a title="Delete World" data-action="deleteItem" class="item-delete item" data-item-id="{{world.id}}"><i class="fas fa-trash"></i></a> <a data-action="campaignStep" class="ct-step" data-ct-phase="arrival" data-ct-action="clear-arrival" title="{{localize 'FP.campaign_turn.arrival.clear'}}"><i class="fas fa-times-circle"></i></a></span><br/>
+        <span class="fp sheet-label">{{localize "FP.ui.world.traits"}}: </span><span class="hw">{{world.system.traits}}</span><br/>
+        <span class="fp sheet-label">{{localize "FP.ui.world.license"}}:</span><span class="hw">{{#if world.system.licensing}}{{localize "FP.ui.general.yes"}}{{else}}{{localize "FP.ui.general.no"}}{{/if}} {{#if world.system.license_obtained}}{{localize "FP.ui.world.lic_acq"}}{{else}}{{localize "FP.ui.world.lic_not_acq"}}{{/if}}</span><br/>
+        <span class="fp sheet-label">{{localize "FP.ui.world.invaders"}}: </span><span class="hw">{{world.system.invaders}}{{#if (ne world.system.invaders "")}}/{{/if}}{{world.system.inv_progress}}</span><br/>
+        {{/if}}
+        {{/each}}
+        <!--span class="fp sheet-label">Followed? </span><span class="hw">{{#if data.campaign_turn.arrival.followed}}Yes{{else}}No{{/if}}</span></p-->
+    </td>
+</tr>

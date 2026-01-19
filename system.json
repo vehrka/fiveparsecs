@@ -1,0 +1,64 @@
+{
+  "id": "fiveparsecs",
+  "title": "Five Parsecs from Home",
+  "description": "Foundry VTT System for Five Parsecs from Home Solo Wargame (Unofficial)",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "vehrka"
+    }
+  ],
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "esmodules": ["module/fiveparsecs.mjs"],
+  "scripts": [],
+  "styles": ["styles/fiveparsecs.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "grid": {
+    "distance": 1,
+    "units": "in"
+  },
+  "primaryTokenAttribute": null,
+  "secondaryTokenAttribute": null,
+  "url": "https://github.com/vehkra/fiveparsecs",
+  "manifest": "https://github.com/vehkra/fiveparsecs/releases/latest/download/system.json",
+  "download": "https://github.com/vehkra/fiveparsecs/releases/latest/download/fiveparsecs-main.zip",
+  "documentTypes": {
+    "Actor": {
+      "character": {
+        "htmlFields": ["notes"]
+      },
+      "enemy": {
+        "htmlFields": ["notes"]
+      },
+      "crew": {
+        "htmlFields": ["notes"]
+      }
+    },
+    "Item": {
+      "weapon": {
+        "htmlFields": ["notes"]
+      },
+      "gear": {
+        "htmlFields": ["notes"]
+      },
+      "background": {},
+      "class": {},
+      "motivation": {},
+      "crew_assignment": {},
+      "world": {
+        "htmlFields": ["notes"]
+      },
+      "patron_job": {},
+      "battle": {}
+    }
+  }
+}

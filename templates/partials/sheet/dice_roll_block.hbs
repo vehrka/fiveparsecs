@@ -1,0 +1,37 @@
+<div class="fp flexrow" style="background:{{#if (eq chartype 'enemy')}}#ec6260{{else}}#7dc8e6{{/if}};
+                                                   max-height:42px;  
+                                                   margin-right:0 !important;">
+                    <div class="fp flex-item dice-icon">
+                        <a title="{{localize 'FP.ui.general.roll'}} 1d6" data-action="diceRoll" class="dice-roll" data-dice-base="1d6">
+                            <img class="dice-img" src="systems/fiveparsecs/assets/d6s.png" height="32" width="32" style="border:0"/>
+                        </a>
+                    </div>
+                    <div class="fp flex-item dice-icon">
+                        <a title="{{localize 'FP.ui.general.roll'}} 2d6" data-action="diceRoll" class="dice-roll" data-dice-base="2d6">
+                            <img class="dice-img" src="systems/fiveparsecs/assets/d6.png" height="32" width="32" style="border:0"/>
+                        </a>
+                    </div>
+                     <div class="fp flex-item dice-icon">
+                        <a title="{{localize 'FP.ui.general.roll'}} 1d10" data-action="diceRoll" class="dice-roll" data-dice-base="1d10">
+                            <img class="dice-img" src="systems/fiveparsecs/assets/d10.png" height="32" width="32" style="border:0"/>
+                        </a>
+                    </div>
+                     <div class="fp flex-item dice-icon">
+                        <a title="{{localize 'FP.ui.general.roll'}} {{localize 'FP.ui.general.percentile'}}" data-action="diceRoll" class="dice-roll" data-dice-base="1d100">
+                            <img class="dice-img" src="systems/fiveparsecs/assets/d100.png" height="32" width="32" style="border:0"/>
+                        </a>
+                    </div>
+                    <div class="fp flex-item dice-icon">
+                        <a title="{{localize 'FP.ui.general.roll'}} {{localize 'FP.ui.general.custom'}}" data-action="diceRoll" class="dice-roll" data-dice-base="custom">
+                            <img class="dice-img" src="systems/fiveparsecs/assets/dwhatever.png" height="32" width="32" style="border:0"/>
+                        </a>
+                    </div>
+                    {{#if (eq chartype "character")}}
+                    <div class="fp flex-item dice-icon">
+                        <a title="{{localize 'FP.ui.combat.brawl_atk'}}" data-action="attackRoll" class="atk-roll" data-weapon-id="brawl">
+                            <img class="dice-img" src="systems/fiveparsecs/assets/mailed-fist.png" height="32" width="32" style="border:0"/>
+                        </a>
+                    </div>
+                    {{/if}}
+                    
+                </div>

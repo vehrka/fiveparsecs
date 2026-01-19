@@ -1,0 +1,112 @@
+<div class="crew-header">
+    <header class="fp sheethead">
+    </header>
+
+    <section class="sheetbody">
+        <div class="fp flexrow"> {{!--main row - image, and crewsheet body--}}
+            <div class="fp flexcol" style="max-width:28px; background:#7dc8e6; text-align:center;">
+                    <div class="fp flex-item dice-icon-compact">
+                        <a title="Roll 1d6" data-action="diceRoll" class="dice-roll" data-dice-base="1d6">
+                            <img class="dice-img" src="systems/fiveparsecs/assets/d6s.png" height="24" width="24" style="border:0"/>
+                        </a>
+                    </div>
+                    <div class="fp flex-item dice-icon-compact">
+                        <a title="Roll 2d6" data-action="diceRoll" class="dice-roll" data-dice-base="2d6">
+                            <img class="dice-img" src="systems/fiveparsecs/assets/d6.png" height="24" width="24" style="border:0"/>
+                        </a>
+                    </div>
+                     <div class="fp flex-item dice-icon-compact">
+                        <a title="Roll 1d10" data-action="diceRoll" class="dice-roll" data-dice-base="1d10">
+                            <img class="dice-img" src="systems/fiveparsecs/assets/d10.png" height="24" width="24" style="border:0"/>
+                        </a>
+                    </div>
+                     <div class="fp flex-item dice-icon-compact">
+                        <a title="Roll Percentile" data-action="diceRoll" class="dice-roll" data-dice-base="1d100">
+                            <img class="dice-img" src="systems/fiveparsecs/assets/d100.png" height="24" width="24" style="border:0"/>
+                        </a>
+                    </div>
+                    <div class="fp flex-item dice-icon-compact">
+                        <a title="Roll Custom" data-action="diceRoll" class="dice-roll" data-dice-base="custom">
+                            <img class="dice-img" src="systems/fiveparsecs/assets/dwhatever.png" height="24" width="24" style="border:0"/>
+                        </a>
+                    </div>
+            </div>
+            <div class="fp flexcol" style="max-width:150px; background:#7dc8e6; margin-left:6px;"> {{!--dice and image column--}}
+                <div class="fp flex-item" style="text-align:center;">
+                    <span class="fp sheet-label labels" style="color:white; font-size:1.35em;">CREW LOG</span>
+                </div>
+                <div class="fp flex-item" style="flex-grow:0; text-align:center"> {{!--image flex column--}}
+                        <img class="profile-img" style=" border:1px solid #44b9de; margin-right:auto; margin-left:auto; min-width:96px !important; min-height:96px !imporant; cursor:pointer" src="{{actor.img}}" data-action="changeImage" title="{{actor.name}}" height="96" width="96"/>
+
+                </div>
+
+            </div> {{!--end dice and image column--}}
+
+            <div class="fp flexcol" style="min-width:70%; margin-left:6px;"> {{!--crew information column--}}
+
+                <div class="fp flexrow" style="background:#7dc8e6;">
+                    <div class="fp flex-item" style="max-width:25%">
+                        <span class="fp sheet-label-white">{{localize "FP.crew.name"}}</span><br/>
+                        <span data-field="name" class="inline-edit hw val-box" contenteditable><strong>{{actor.name}}</strong> </span>
+                    </div>
+                    <div class="fp flex-item" style="max-width:59%">
+                        <span class="fp sheet-label-white">{{localize "FP.ui.general.notes"}}</span><br/>
+                         <span data-field="data.notes" class="inline-edit hw val-box"  contenteditable>{{data.notes}}</span>
+                    </div>
+                     <div class="fp flex-item" style="max-width:15%; text-align:center">
+                        <span class="fp sheet-label-white">{{localize "FP.crew.stat.story_points"}}</span><br/>
+                        <span data-field="data.sp" class="inline-edit hw val-box"  contenteditable>{{data.sp}}</span>
+                    </div>
+                </div>
+
+                <div class="fp flexrow" style="background:#7dc8e6;">
+                    <div class="fp flex-item">
+                        <span class="fp sheet-label-white">{{localize "FP.crew.stash"}}</span><br/>
+                        <span data-field="data.stash" class="inline-edit hw val-box"  contenteditable>{{data.stash}}</span>
+                    </div>
+                    <div class="fp flex-item" style="max-width:10%; text-align:center">
+                        <span class="fp sheet-label-white">{{localize "FP.crew.stat.credits"}}</span><br/>
+                        <span data-field="data.credits" class="inline-edit hw val-box"  contenteditable>{{data.credits}}</span>
+                    </div>
+                     <div class="fp flex-item" style="max-width:10%; text-align:center">
+                        <span class="fp sheet-label-white">{{localize "FP.crew.stat.patrons"}}</span><br/>
+                        <span data-field="data.patrons" class="inline-edit hw val-box"  contenteditable>{{data.patrons}}</span>
+                    </div>
+                    <div class="fp flex-item" style="max-width:10%; text-align:center">
+                        <span class="fp sheet-label-white">{{localize "FP.crew.stat.rivals"}}</span><br/>
+                        <span data-field="data.rivals" class="inline-edit hw val-box" contenteditable>{{data.rivals}}</span>
+                    </div>
+                </div>
+
+                <div class="fp flexrow" style="background:#7dc8e6;">
+                    <div class="fp flex-item" style="max-width:25%;">
+                        <span class="fp sheet-label-white">{{localize "FP.ship.name"}}</span><br/>
+                        <span data-field="data.ship" class="inline-edit hw val-box"  contenteditable>{{data.ship}}</span>
+                    </div>
+
+                     <div class="fp flex-item">
+                        <span class="fp sheet-label-white">{{localize "FP.ship.stat.traits"}}</span><br/>
+                        <span data-field="data.ship_traits" class="inline-edit hw val-box"  contenteditable>{{data.ship_traits}}</span>
+                    </div>
+                    <div class="fp flex-item">
+                        <span class="fp sheet-label-white">{{localize "FP.ship.stat.upgrades"}}</span><br/>
+                        <span data-field="data.ship_upgrades" class="inline-edit hw val-box"  contenteditable>{{data.ship_upgrades}}</span>
+                    </div>
+                    <div class="fp flex-item" style="max-width:7%; text-align:center">
+                        <span class="fp sheet-label-white">{{localize "FP.ship.stat.hull"}}</span><br/>
+                        <span data-field="data.hull" class="inline-edit hw val-box"  contenteditable>{{data.hull}}</span>
+                    </div>
+                     <div class="fp flex-item" style="max-width:7%; text-align:center">
+                        <span class="fp sheet-label-white">{{localize "FP.ship.stat.maxhull"}}</span><br/>
+                        <span data-field="data.hullmax" class="inline-edit hw val-box"  contenteditable>{{data.hullmax}}</span>
+                    </div>
+                     <div class="fp flex-item" style="max-width:7%; text-align:center">
+                        <span class="fp sheet-label-white">{{localize "FP.ship.stat.debt"}}</span><br/>
+                        <span data-field="data.debt" class="inline-edit hw val-box"  contenteditable>{{data.debt}}</span>
+                    </div>
+                </div>
+            </div> {{!--end crew information column--}}
+
+        </div>
+    </section>
+</div>

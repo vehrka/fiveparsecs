@@ -1,0 +1,20 @@
+<div class="enemy-header">
+    <header class="fp sheethead">
+    </header>
+
+    <section class="sheetbody">
+        <div class="fp flexrow">
+            <div class="fp flexcol" style="border:2px solid #e72d41">
+                <div class="fp flexrow">
+                    <div class="fp flex-item">
+                        <img class="profile-img" style="border:1px solid #e72d41; min-width:64px !important; min-height:64px !imporant; cursor:pointer" src="{{actor.img}}" data-action="changeImage" title="{{actor.name}}" height="64" width="64"/>
+                    {{!--character image column--}}
+                    </div>
+                    {{> 'systems/fiveparsecs/templates/partials/sheet/dice_roll_block.hbs'
+                                chartype=actor.type
+                    }}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

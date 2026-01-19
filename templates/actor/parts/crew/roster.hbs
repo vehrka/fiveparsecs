@@ -1,0 +1,131 @@
+<section class="tab roster-content {{tab.cssClass}}" data-group="primary" data-tab="main">
+    <div>
+        <h2 class="fp sheet-label">
+            <a data-action="createItem" class="item-create" title="{{localize 'FP.ui.crewsheet.add'}}" data-type="crew_assignment">
+                <i class="fas fa-plus-square"></i> {{localize "FP.ui.crewsheet.add"}}
+            </a> |
+            <a data-action="refreshCrew" class="refresh-crew" title="{{localize 'FP.ui.crewsheet.refresh'}}">
+                <i class="fas fa-sync-alt"></i> {{localize "FP.ui.crewsheet.refresh"}}
+            </a>
+        </h2>
+    </div>
+
+    <div class="fp flexcol roster-list"> {{!--crew roster container flex column--}}
+        {{#each assignedCrew as |crew id|}}
+        <div class="fp flex-item" style="border:2px solid #7dc8e6; border-radius:8px; margin:3px;
+        {{#if crew.mbr_casualty}}background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAJ0lEQVQYV2NkgIL/DAz/GRkYGEFcMIEsABZEF4CrhBmBpAshBNMFAA5zCgTDHweQAAAAAElFTkSuQmCC){{/if}}">
+
+            <div class="fp flexrow">
+
+                <div class="flex-item" style="min-width:50%;">
+                    <table class="fp crew-roster">
+                        <tr class="fp sheet-label">
+                            <th style="border-right:1px solid gray">{{localize "FP.gameterm.name"}}</th>
+                            <th>{{localize "FP.gameterm.species"}}</th>
+                            <th>{{localize "FP.character.save"}}</th>
+                        </tr>
+                        <tr class="hw">
+                            <td style="padding-right:3px; border-right:1px solid gray;">{{crew.mbr_name}} {{#if crew.mbr_captain}}<i class="fas fa-flag"></i>{{/if}} {{#if (gt crew.mbr_sick 0)}}({{localize "FP.ui.general.sickbay"}} {{crew.mbr_sick}} {{localize "FP.ui.general.time"}}){{/if}}</td>
+                            <td style="padding-left:3px;">{{crew.mbr_species}}</td>
+                            <td style="padding-left:3px;">{{crew.mbr_save}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="fp flex-item" style="text-align:center; max-width:35%;">
+                    <table class="fp crew-roster">
+                        <tr class="fp sheet-label-center">
+                            <th>{{localize "FP.character.stat_abbrev.reactions"}}</th>
+                            <th>{{localize "FP.character.stat_abbrev.speed"}}</th>
+                            <th>{{localize "FP.character.stat_abbrev.combat"}}</th>
+                            <th>{{localize "FP.character.stat_abbrev.toughness"}}</th>
+                            <th>{{localize "FP.character.stat_abbrev.savvy"}}</th>
+                        </tr>
+
+                        <tr class="hw">
+                        <td>{{crew.mbr_reactions}}</td>
+                    <td>{{crew.mbr_speed}}</td>
+                    <td>{{crew.mbr_combat}}</td>
+                    <td>{{crew.mbr_toughness}}</td>
+                    <td>{{crew.mbr_savvy}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="fp flex-item" style="text-align:center; max-width:10%;">
+                    <table class="fp crew-roster">
+                        <tr class="fp sheet-label-center">
+                            <th>{{localize "FP.character.stat.luck"}}</th>
+                            <th>{{localize "FP.character.stat.xp"}}</th>
+                        </tr>
+                        <tr class="hw">
+                            <td>{{crew.mbr_luck}}</td>
+                            <td>{{crew.mbr_xp}}</td>
+                        </tr>
+
+                    </table>
+                </div>
+                <div class="fp flexcol item-name item" data-crew-id="{{crew.mbr_id}}" data-item-id="{{crew.mbr_item_id}}" style="max-width:48px; background:#7dc8e6; color:white; text-align:center;">
+                    <a data-action="deleteItem" class="item-delete" title="{{localize 'FP.ui.crewsheet.delete'}}" data-type="crew_assignment">
+                        <span style="font-size:2em"><i class="fas fa-minus-square"></i></span>
+                    </a>
+                    <a data-action="editItem" class="item-edit" title="{{localize 'FP.ui.crewsheet.edit'}}" data-type="crew_actor">
+                        <span style="font-size:2em"><i class="fas fa-edit"></i></span>
+                    </a>
+                </div>
+                {{!--name and stats row--}}
+            </div>
+            <div class="fp flexrow"> {{!--weapons and gear/notes line--}}
+                <div class="fp flexcol" style="min-width:50%">
+
+                        <div style="padding:3px; margin-right:12px;">
+                            <table class="fp crew-roster" style="border-collapse:collapse;">
+                                <tr class="fp sheet-label">
+                                    <th>{{localize "FP.gameterm.weapon"}}</th>
+                                    <th>{{localize "FP.weapon.stat.range"}}</th>
+                                    <th>{{localize "FP.weapon.stat.shots"}}</th>
+                                    <th>{{localize "FP.weapon.stat.damage"}}</th>
+                                    <th>{{localize "FP.gameterm.traits"}}</th>
+                                </tr>
+                                {{#each crew.mbr_weapons as |weapon id|}}
+                                <tr>
+                                    <td class="hw">{{weapon.name}}</td>
+                                    <td class="hw" style="text-align:center">{{weapon.range}}</td>
+                                    <td class="hw" style="text-align:center">{{weapon.shots}}</td>
+                                    <td class="hw" style="text-align:center">{{weapon.dmg}}</td>
+                                    <td class="hw" style="text-align:center">{{weapon.traits}}</td>
+                                </tr>
+                                {{/each}}
+                            </table>
+                        </div>
+
+                </div>
+
+                <div class="fp flexcol">
+                        <div style="padding:3px; margin-right:12px;">
+                            <table class="fp crew-roster">
+                                <tr>
+                                    <th><span class="fp sheet-label" style="vertical-align:top;">{{localize 'FP.gameterm.gear'}}</span></th>
+                                    <td class="hw">{{crew.mbr_gear}}</td>
+                                </tr>
+                                <tr>
+                                    <th><span class="fp sheet-label" style="vertical-align:top;">{{localize 'FP.gameterm.notes'}}</span></th><td class="hw">{{crew.mbr_notes}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                </div>
+                <div class="fp flexcol item-name item" data-crew-id="{{crew.mbr_id}}" data-item-id="{{crew.mbr_item_id}}" style="max-width:48px; background:#7dc8e6; color:white; text-align:center;">
+                    <a data-action="editCrewMember" class="passthru-edit-crew-member" title="{{localize 'FP.ui.crewsheet.captain'}}" data-crew-action="toggle_captain">
+                        <span style="font-size:2em"><i class="fas fa-flag"></i></span>
+                    </a>
+                    <a data-action="editCrewMember" class="passthru-edit-crew-member" title="{{localize 'FP.ui.crewsheet.casualty'}}" data-crew-action="toggle_casualty">
+                        <span style="font-size:2em"><i class="fas fa-heartbeat"></i></span>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        {{/each}}
+
+    </div>
+</section>
