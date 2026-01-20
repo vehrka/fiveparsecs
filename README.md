@@ -39,6 +39,43 @@ This system helps you manage your Five Parsecs campaigns digitally, providing in
 - Integrated dice roller with visual dice images
 - Support for d4, d6, d8, d10, d12, and d20
 
+## Data Import
+
+The system supports bulk importing items (Weapons, Gear, Traits) from CSV or TSV (Tab-Separated) files.
+
+### How to Import
+1. Open the **Items Directory** in the right sidebar.
+2. Click the **Import CSV** button at the bottom.
+3. Select the **Item Type** you are importing.
+4. (Optional) Select a **Target Folder**.
+5. Choose your file and click **Import CSV**.
+
+### Expected File Headers
+The first row of your file must contain headers that match the system's fields. Headers are case-insensitive.
+
+#### Common Headers (All Types)
+- `name`: The name of the item.
+- `notes`: Description or flavor text.
+- `rules`: Mechanical rules text.
+- `cost`: Credit cost (number).
+- `img`: Path to an image file.
+
+#### Weapons
+- `range`: Weapon range in inches.
+- `shots`: Number of shots.
+- `damage`: Damage modifier.
+- `traits`: Special weapon traits (e.g., "Pistol, Critical").
+
+#### Gear
+- `type`: The category of gear (e.g., "Armor", "Consumable").
+- `uses`: Number of uses (0 for unlimited).
+- `affects`: Who the gear affects (e.g., "Self", "Area").
+
+#### Backgrounds, Classes, & Motivations
+- `effect`: The mechanical effect granted.
+- `resources`: Starting resources granted.
+- `starting_rolls`: Any starting rolls provided.
+
 ## Credits
 
 This system is based on the original implementation by **Waryjack**: [github.com/waryjack/fiveparsecs](https://github.com/waryjack/fiveparsecs)

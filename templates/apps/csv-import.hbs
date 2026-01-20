@@ -1,0 +1,50 @@
+<form autocomplete="off" onsubmit="event.preventDefault();">
+    <div class="form-group">
+        <label>{{localize "FP.Importer.FileType"}}</label>
+        <div class="form-fields">
+            <select name="type">
+                {{#each types}}
+                <option value="{{this}}">{{localize (concat "TYPES.Item." this)}}</option>
+                {{/each}}
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>{{localize "FP.Importer.TargetFolder"}}</label>
+        <div class="form-fields">
+            <select name="folder">
+                <option value="">{{localize "FP.Importer.RootFolder"}}</option>
+                {{#each folders}}
+                <option value="{{this.id}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>{{localize "FP.Importer.File"}}</label>
+        <div class="form-fields">
+            <input type="file" name="csv-file" accept=".csv,.tsv,.txt" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>{{localize "FP.Importer.Format"}}</label>
+        <div class="form-fields">
+            <select name="format">
+                <option value="auto">{{localize "FP.Importer.FormatAuto"}}</option>
+                <option value="tsv">{{localize "FP.Importer.FormatTSV"}}</option>
+                <option value="csv">{{localize "FP.Importer.FormatCSV"}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="notes">
+        {{localize "FP.Importer.Hint"}}
+    </div>
+
+    <button type="submit" name="submit">
+        <i class="fas fa-file-import"></i> {{localize "FP.Importer.Label"}}
+    </button>
+</form>

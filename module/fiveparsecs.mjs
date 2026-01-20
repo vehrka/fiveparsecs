@@ -5,6 +5,7 @@ import { FP } from "./config.mjs";
 import { FPActor } from "./actor/FPActor.mjs";
 import { FPActorSheet } from "./sheets/actor/FPActorSheet.mjs";
 import { FPItemSheet } from "./sheets/item/FPItemSheet.mjs";
+import { FPCSVImporter } from "./utility/FPCSVImporter.mjs";
 
 // DataModel imports
 import {
@@ -203,4 +204,28 @@ Hooks.on('closeActorSheet', function(sheet, html) {
         let parentCrew = a.parent;
         parentCrew.sheet.render(false);
     });
+});
+
+/**
+ * Item Directory Hook to add Import button
+ */
+Hooks.on('renderItemDirectory', (app, html, data) => {
+    if (!game.user.isGM) return;
+
+    // Handle both jQuery and HTMLElement
+    const el = html instanceof HTMLElement ? html : html[0];
+    
+    // Create button
+    const button = document.createElement("button");
+    button.classList.add("import-csv");
+    button.innerHTML = `<i class="fas fa-file-import"></i> ${game.i18n.localize("FP.Importer.Label")}`;
+    
+    button.addEventListener("click", () => {
+        new FPCSVImporter().render(true);
+    });
+
+    const footer = el.querySelector(".directory-footer");
+    if (footer) {
+        footer.appendChild(button);
+    }
 });

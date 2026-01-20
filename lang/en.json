@@ -409,6 +409,21 @@
 			"done":"Completed",
 			"camplog":"Campaign Log"
 			
+        },
+        "Importer": {
+            "Title": "Import CSV Data",
+            "Label": "Import CSV",
+            "FileType": "Item Type",
+            "TargetFolder": "Target Folder",
+            "RootFolder": "Root Directory",
+            "File": "CSV/TSV File",
+            "Format": "Format",
+            "FormatAuto": "Auto-Detect",
+            "FormatTSV": "TSV (Tab-Separated)",
+            "FormatCSV": "CSV (Comma-Separated)",
+            "Hint": "Import items from a CSV or TSV file. The first row must contain headers. Common headers: name, range, shots, damage, traits, img.",
+            "Success": "Successfully imported {count} items.",
+            "Error": "Error importing file: {message}"
         }
 
     }
