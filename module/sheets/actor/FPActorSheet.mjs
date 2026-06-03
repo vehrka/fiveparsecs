@@ -495,14 +495,27 @@ export class FPActorSheet extends ApplicationV2Mixin(HandlebarsApplicationMixin(
     }
 
     /**
-     * Handle changing actor image via FilePicker
+     * Handle changing actor image. Delegates to the Tokenizer module when it is
+     * active and enabled, otherwise falls back to the core FilePicker.
      * @this {FPActorSheet}
      * @param {PointerEvent} event - The triggering click event
      * @param {HTMLElement} target - The element that triggered the action
      */
     static async #onChangeImage(event, target) {
         event.preventDefault();
-        const fp = new FilePicker({
+
+        // Use the Tokenizer module (vtta-tokenizer) when it is active so the user
+        // can edit both the avatar and the prototype token. Tokenizer's own
+        // avatar-click binding only targets [data-edit="img"] elements, which our
+        // sheets do not use, so we delegate explicitly. Holding Shift bypasses
+        // Tokenizer and falls back to the core FilePicker.
+        const tokenizerApi = game.modules.get("vtta-tokenizer")?.api;
+        if (tokenizerApi?.tokenizeActor && !event.shiftKey) {
+            return tokenizerApi.tokenizeActor(this.document);
+        }
+
+        const FilePickerImpl = foundry.applications.apps.FilePicker.implementation;
+        const fp = new FilePickerImpl({
             type: "image",
             current: this.document.img,
             callback: async (path) => {
