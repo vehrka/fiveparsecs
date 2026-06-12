@@ -248,7 +248,7 @@ export class FPRollUtility {
             data.bonus = result.bonus;
             data.malus = result.malus;
 
-            const finalExpr = data.expr + "+" + data.bonus + "+" + data.malus;
+            const finalExpr = data.expr + "+" + data.bonus + "-" + data.malus;
             const r = new Roll(finalExpr);
             const rollInfo = await FPRollUtility.processRoll(r, data);
             FPMessageUtility.createChatMessage(rollInfo);
@@ -297,7 +297,7 @@ export class FPRollUtility {
             data.malus = result.malus;
 
             const totalDice = parseInt(shots) + parseInt(extraDice);
-            const finalExpr = totalDice + dieType + "+" + data.a_combat + "+" + data.bonus + "+" + data.malus;
+            const finalExpr = totalDice + dieType + "+" + data.a_combat + "+" + data.bonus + "-" + data.malus;
 
             const r = new Roll(finalExpr);
             const rollInfo = await FPRollUtility.processRoll(r, data);
@@ -347,7 +347,7 @@ export class FPRollUtility {
             data.bonus = result.bonus;
             data.malus = result.malus;
 
-            const finalExpr = numDice + result.baseDice + "+" + data.bonus + "+" + data.malus;
+            const finalExpr = numDice + result.baseDice + "+" + data.bonus + "-" + data.malus;
 
             const r = new Roll(finalExpr);
             const rollInfo = await FPRollUtility.processRoll(r, data);

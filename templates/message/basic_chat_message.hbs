@@ -7,8 +7,7 @@
     </header>
 </div>
 <div class="taskroll-msg">
-    <p> <strong><span style="margin-left:6px; font-family:'Saira Condensed',sans-serif;">{{localize "FP.ui.general.roll"}} {{localize "FP.ui.general.total"}}</span>: {{roll.total}}</strong></p>  
-    <p> <strong><span style="margin-left:6px; font-family:'Saira Condensed',sans-serif;">{{localize "FP.ui.general.total"}} {{localize "FP.ui.general.modifiers"}}</span>:  
+    <p> <strong><span style="margin-left:6px; font-family:'Saira Condensed',sans-serif;">{{localize "FP.ui.general.total"}} {{localize "FP.ui.general.modifiers"}}</span>:
     <span style="border-bottom:1px dotted black;" title="{{bonus}} (Bonus) - {{malus}} (Penalty)">{{#if (lt 0 modifiers)}}-{{else}}+{{/if}}{{totalMod}}</span></strong>
     </p>
 </div>
@@ -20,6 +19,11 @@
             </div>
         {{/each}}
     </div>
+
+<div class="roll-total-bar" style="background:#222244; color:white; text-align:center; padding:6px; border-top:1px solid #44b9de; font-family:'Saira Condensed',sans-serif;">
+    <span style="font-size:14px; vertical-align:middle;">{{localize "FP.ui.general.roll"}} {{localize "FP.ui.general.total"}}</span>
+    <strong style="font-size:36px; margin-left:8px; vertical-align:middle;">{{roll.total}}</strong>
+</div>
 
 <div class="taskroll-outcome {{outclass}}" style="display:none;">
     {{outcome}}
