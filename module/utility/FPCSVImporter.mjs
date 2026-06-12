@@ -1,58 +1,73 @@
+const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
-export class FPCSVImporter extends FormApplication {
-    constructor(options = {}) {
-        super(options);
-    }
+/**
+ * CSV/TSV item importer - v14 ApplicationV2.
+ * Converted from the legacy FormApplication to AppV2 to remove the
+ * AppV1 deprecation warning under Foundry v14.
+ */
+export class FPCSVImporter extends HandlebarsApplicationMixin(ApplicationV2) {
 
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            id: "fp-csv-importer",
-            title: "FP.Importer.Title",
-            template: "systems/fiveparsecs/templates/apps/csv-import.hbs",
+    static DEFAULT_OPTIONS = {
+        id: "fp-csv-importer",
+        tag: "form",
+        classes: ["fp", "fp-csv-importer"],
+        window: {
+            title: "FP.Importer.Title"
+        },
+        position: {
             width: 400,
-            height: "auto",
+            height: "auto"
+        },
+        form: {
+            handler: FPCSVImporter.#onSubmit,
             closeOnSubmit: true
-        });
-    }
+        }
+    };
 
-    async getData() {
+    static PARTS = {
+        form: { template: "systems/fiveparsecs/templates/apps/csv-import.hbs" }
+    };
+
+    /**
+     * v14: Replaces getData()
+     */
+    async _prepareContext(options) {
         const folders = game.folders.filter(f => f.type === "Item");
-        const types = ["weapon", "gear", "background", "motivation", "class"]; 
+        const types = ["weapon", "gear", "background", "motivation", "class"];
         return {
             folders,
             types
         };
     }
 
-    async _updateObject(event, formData) {
-        if (!formData["csv-file"]) {
+    /**
+     * AppV2 form submit handler.
+     * @this {FPCSVImporter}
+     * @param {SubmitEvent} event
+     * @param {HTMLFormElement} form
+     * @param {FormDataExtended} formData
+     */
+    static async #onSubmit(event, form, formData) {
+        const data = formData.object;
+
+        // File inputs are not captured by FormDataExtended; read from the element.
+        const input = form.elements["csv-file"];
+        const actualFile = input?.files?.[0];
+
+        if (!actualFile) {
             ui.notifications.error(game.i18n.localize("FP.Importer.Error").replace("{message}", "No file selected"));
             return;
         }
 
-        const file = formData["csv-file"]; // This might be a FileList or just the input value if not handled right?
-        // In FormApplication, file inputs usually need manual handling or the 'game.modules.get("file-picker")' etc. 
-        // But for a simple file upload in a form, we usually need to read it from the HTML input directly in the event, 
-        // because formData might just contain the filename string.
-        
-        // Let's grab the file from the event's form element directly to be safe.
-        const input = $(event.currentTarget).find('input[name="csv-file"]')[0];
-        const actualFile = input.files[0];
-
-        if (!actualFile) {
-             ui.notifications.error(game.i18n.localize("FP.Importer.Error").replace("{message}", "No file selected"));
-             return;
-        }
-
         const text = await actualFile.text();
-        const type = formData.type;
-        const targetFolder = formData.folder;
-        const format = formData.format;
+        const type = data.type;
+        const targetFolder = data.folder;
+        const format = data.format;
 
         try {
-            const data = this.parseCSV(text, format);
-            await this.createItems(data, type, targetFolder);
-            ui.notifications.info(game.i18n.localize("FP.Importer.Success").replace("{count}", data.length));
+            const rows = this.parseCSV(text, format);
+            await this.createItems(rows, type, targetFolder);
+            ui.notifications.info(game.i18n.localize("FP.Importer.Success").replace("{count}", rows.length));
         } catch (err) {
             console.error(err);
             ui.notifications.error(game.i18n.localize("FP.Importer.Error").replace("{message}", err.message));
@@ -78,7 +93,7 @@ export class FPCSVImporter extends FormApplication {
         for (let i = 1; i < lines.length; i++) {
             const row = this._splitLine(lines[i], delimiter);
             const obj = {};
-            
+
             headers.forEach((h, index) => {
                 if (row[index] !== undefined) {
                     let val = row[index].trim();
@@ -94,7 +109,7 @@ export class FPCSVImporter extends FormApplication {
 
     _splitLine(line, delimiter) {
         if (delimiter === "\t") return line.split("\t");
-        
+
         // CSV logic with quotes
         const result = [];
         let cur = "";
@@ -180,20 +195,20 @@ export class FPCSVImporter extends FormApplication {
             class: traitCommon,
             motivation: traitCommon
         };
-        
+
         return mappings[type] || common;
     }
 
     resolveImage(imgVal) {
         if (!imgVal) return "icons/svg/item-bag.svg";
-        
+
         // If it looks like w49, w27 etc.
         if (/^[a-z]\d+$/.test(imgVal)) {
             // Check if we have a mapping or just default.
             // PRP says "does not match existing assets".
-            return "icons/svg/item-bag.svg"; 
+            return "icons/svg/item-bag.svg";
         }
-        
+
         // If it looks like a path, keep it
         if (imgVal.includes("/")) return imgVal;
 
